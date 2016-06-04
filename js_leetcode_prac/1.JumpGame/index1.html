@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h1>program url: <a href="https://leetcode.com/problems/jump-game/">https://leetcode.com/problems/jump-game/</a>
+    </h1>
+
+    <textarea style="width:800px;height:400px;">Given an array of non-negative integers, you are initially positioned at the first index of the array.
+
+    Each element in the array represents your maximum jump length at that position.
+
+    Determine if you are able to reach the last index.
+
+    For example:
+    A = [2,3,1,1,4], return true.
+
+    A = [3,2,1,0,4], return false.
+
+    Subscribe to see which companies asked this question
+
+    Show Tags
+    </textarea>
+<textarea style="width:800px;height:400px;">Given an array of non-negative integers, you are initially positioned at the first index of the array.
+
+     /**
+     * @param {number[]} nums
+     * @return {boolean}
+     */
+    var canJump = function(nums) {
+        var leftnum=0;//当前遍历过的所有elements能到最远位置
+        var rightnum=nums.length;
+        var num=0;//当前element能到的最远位置
+        for(var i=0;i<rightnum;i++)
+        {
+            num =nums[i]+i;
+            if(num>leftnum)leftnum=num;
+            if(leftnum<=i)break;
+            if(leftnum>=rightnum)break;
+        }
+        if(leftnum>=rightnum-1)
+            return true;
+        else
+            return false;
+    };
+    console.log('[2,3,1,1,4]:',canJump([2,3,1,1,4]));//true
+    console.log('[3,2,1,0,4]:',canJump([3,2,1,0,4]));//false
+    console.log('[0]:',canJump([0]));//true
+    </textarea>
+</div>
+<script>
+    /**
+     * @param {number[]} nums
+     * @return {boolean}
+     */
+    var canJump = function (nums) {
+        var leftnum = 0;//当前遍历过的所有elements能到最远位置
+        var rightnum = nums.length;
+        var num = 0;//当前element能到的最远位置
+        for (var i = 0; i < rightnum; i++) {
+            num = nums[i] + i;
+            if (num > leftnum)leftnum = num;
+            if (leftnum <= i)break;
+            if (leftnum >= rightnum)break;
+        }
+        if (leftnum >= rightnum - 1)
+            return true;
+        else
+            return false;
+    };
+    console.log('[2,3,1,1,4]:', canJump([2, 3, 1, 1, 4]));//true
+    console.log('[3,2,1,0,4]:', canJump([3, 2, 1, 0, 4]));//false
+    console.log('[0]:', canJump([0]));//true
+</script>
+</body>
+</html>
