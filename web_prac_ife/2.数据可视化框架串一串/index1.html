@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+</head>
+
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<h1>lineschart:</h1>
+<div id="main1" style="height:400px"></div>
+<div id="main2" style="height:400px"></div>
+<div id="main3" style="height:400px"></div>
+<div id="main4" style="height:400px"></div>
+<div id="main5" style="height:400px"></div>
+<div id="main6" style="height:400px"></div>
+<div id="main7" style="height:400px"></div>
+<div id="main8" style="height:400px"></div>
+<div id="main10" style="height:400px"></div>
+<!-- ECharts单文件引入 -->
+<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+<!--<script src="../../echarts/dist/echarts.js"></script>-->
+<script src="data.js"></script>
+<script type="text/javascript">
+    // 路径配置
+    require.config({
+        paths: {
+            echarts: 'http://echarts.baidu.com/build/dist'
+        }
+    });
+    require(
+            [
+                'echarts',
+                    'echarts/chart/bar',
+                'echarts/chart/line'
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart1 = ec.init(document.getElementById('main1'));
+                var myChart2 = ec.init(document.getElementById('main2'));
+                var myChart3 = ec.init(document.getElementById('main3'));
+                var myChart4 = ec.init(document.getElementById('main4'));
+                var myChart5 = ec.init(document.getElementById('main5'));
+                var myChart6 = ec.init(document.getElementById('main6'));
+                var myChart7 = ec.init(document.getElementById('main7'));
+                var myChart8 = ec.init(document.getElementById('main8'));
+                var myChart10 = ec.init(document.getElementById('main10'));
+                // 为echarts对象加载数据
+                myChart1.setOption(linedata.option1);
+                myChart2.setOption(linedata.option2);
+                myChart3.setOption(linedata.option3);
+                myChart4.setOption(linedata.option4);
+                myChart5.setOption(linedata.option5);
+                myChart6.setOption(linedata.option6);
+                myChart7.setOption(linedata.option7);
+                myChart8.setOption(linedata.option8);
+                myChart10.setOption(linedata.option10);
+            }
+    );
+</script>
+</body>
+</html>
