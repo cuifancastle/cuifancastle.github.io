@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>top-k-frequent-elements</title>
+</head>
+<body>
+<a href="https://leetcode.com/problems/top-k-frequent-elements/">https://leetcode.com/problems/top-k-frequent-elements/</a>
+<textarea name="" id="" cols="30" rows="10">
+    Given a non-empty array of integers, return the k most frequent elements.
+
+For example,
+Given [1,1,1,2,2,3] and k = 2, return [1,2].
+
+Note:
+You may assume k is always valid, 1 ≤ k ≤ number of unique elements.
+Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
+</textarea>
+<script>
+    //单链表设计
+    var  Node=function(element){
+        this.num = element.num;
+        this.times = element.times;
+        this.next = null;
+    };
+    function LinkedList(){
+        this._head = new Node({num:null,times:null});//头节点不算
+        this._size = 0;
+    }
+
+    LinkedList.prototype.isEmpty =  function(){
+        return this._size === 0;
+    };
+
+    LinkedList.prototype.size =  function(){
+        return this._size;
+    };
+
+    LinkedList.prototype.getHead = function(){
+        return this._head;
+    };
+
+    LinkedList.prototype.display = function(){
+        var currNode = this.getHead().next;
+        while(currNode){
+//            console.log(currNode.element);
+            console.log(currNode);
+            currNode = currNode.next;
+        }
+    };
+
+    LinkedList.prototype.remove = function(item){
+        if(item) {
+            var preNode = this.findPre(item);
+            if(preNode == null)
+                return ;
+            if (preNode.next !== null) {
+                preNode.next = preNode.next.next;
+                this._size--;
+            }
+        }
+    };
+    //添加到尾部
+    LinkedList.prototype.add = function(item){
+        this.insert(item);
+    };
+    //添加到item后
+    LinkedList.prototype.insert = function(newElement, item){
+        var newNode = new Node(newElement);
+        var finder = item ? this.find(item) : null;
+        if(!finder){
+            var last = this.findLast();
+            last.next = newNode;
+        }
+        else{
+            newNode.next = finder.next;
+            finder.next = newNode;
+        }
+        this._size++;
+    };
+
+    /*********************** Utility Functions ********************************/
+
+    LinkedList.prototype.findLast = function(){
+        var currNode = this.getHead();
+        while(currNode.next){
+            currNode = currNode.next;
+        }
+        return currNode;
+    };
+
+    LinkedList.prototype.findPre = function(item){
+        var currNode = this.getHead();
+        while(currNode.next !== null && currNode.next.num !== item){
+            currNode = currNode.next;
+        }
+        return currNode;
+    };
+
+    LinkedList.prototype.find = function(item){
+        if(item == null)
+            return null;
+        var currNode = this.getHead();
+        while(currNode && currNode.num !== item){
+            currNode = currNode.next;
+        }
+        return currNode;
+    };
+
+    //-----------------------------------------------------
+    /**
+     * @param {number[]} nums
+     * @param {number} k
+     * @return {number[]}
+     */
+    var topKFrequent = function(nums, k) {
+        var linkedlist= new LinkedList();
+        for(var i in nums)
+        {
+            var currtnode = linkedlist.find(nums[i]);
+            if(currtnode == null)
+            {
+                linkedlist.insert({num:nums[i],times:1});
+            }else
+            {
+                currtnode.times++;
+                var prenode= linkedlist.findPre(nums[i]);
+                if(prenode===linkedlist.getHead()){
+                    continue;
+                }
+                else
+                {
+//                    if(prenode.times<currtnode.times)//交换
+//                    {
+//                        prenode.next=currtnode.next;
+//                        currtnode.next=prenode;
+//                        linkedlist.findPre(prenode.num).next=currtnode;
+//                    }
+                    var fornode2=linkedlist.getHead().next;
+                    while(fornode2!=null)
+                    {
+                        if(currtnode.num>fornode2.num){
+                            var tmp = {num:currtnode.num,times:currtnode.times};
+                            linkedlist.remove(currtnode.num);
+                            linkedlist.insert(tmp,fornode.num);
+                            break;
+                        }
+                    }
+                };
+
+            }
+        };
+        linkedlist.display();
+
+//        var fornode =linkedlist.getHead().next;
+//        var arr = [];
+//        while((--k)>=0)
+//        {
+//            arr.push(fornode.num);
+//            fornode=fornode.next;
+//        }
+//        return arr;
+    };
+//    topKFrequent([1,1,1,2,2,2,2,3],2);
+    topKFrequent([4,1,-1,2,-1,2,3],2);
+//    console.log(  topKFrequent([4,1,-1,2,-1,2,3],2) );  //Expected:[-1,2]
+</script>
+</body>
+</html>

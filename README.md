@@ -1,1 +1,3 @@
-博客
+demo.*
+
+http://cuifancastle.github.io
