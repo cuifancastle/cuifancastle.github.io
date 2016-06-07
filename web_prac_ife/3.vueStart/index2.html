@@ -8,6 +8,12 @@
             background:lawngreen;
             width:400px;height:100px;
         }
+        .class-a{
+            width:100px;
+        }
+        .class-b{
+            width:200px;
+        }
 
     </style>
 </head>
@@ -15,7 +21,7 @@
 <h1>笔记，实例在下面</h1>
 <ul>
     <li>
-        1.插值 <a href="#app"></a><br>
+        <a href="#app1">1.插值 </a><br>
         <textarea name=""  cols="100" rows="10" >
         １。{{* msg }}　单次插值
          ２。在网站上动态渲染任意 HTML 是非常危险的，因为容易导致 XSS 攻击。记住，只对可信内容使用 HTML 插值，永不用于用户提交的内容。
@@ -24,9 +30,71 @@
             textarea过滤器,没明白
         </div>
     </li>
-</ul>
+    <li>
+        <a href="#app2">2.class绑定 </a><br>
+        <textarea name=""  cols="100" rows="10" >
+v-bind:class="{'class-a':isA,'class-B':isB}"
+v-bind:class="classObject"   //classObject:{ 'class-a': true,'class-b': false}
+模板是为了描述视图的结构。在模板中放入太多的逻辑会让模板过重且难以维护。这就是为什么 Vue.js 将绑定表达式限制为一个表达式。如果需要多于一个表达式的逻辑，应当使用计算属性
+此外　数组，三元表达式
+内联样式一样
+       </textarea>
+        <div style="background:#aabbcc;color:orangered;padding:10px;">
 
-<h1>插值</h1>
+        </div>
+    </li>
+    <li>
+        <a href="#app3"> 3.条件渲染</a><br>
+        <textarea name=""  cols="100" rows="10" >
+            １。组件用　 v-show="condition"　　v-show="!condition" 不用v-else　因为优先级会出问题
+            ２。一般来说，v-if 有更高的切换消耗而 v-show 有更高的初始渲染消耗。因此，如果需要频繁切换 v-show 较好，如果在运行时条件不大可能改变 v-if 较好。
+                原因　v-show切换css,  v-if局部编译（事件监听，子组件）
+            ３。 <!--{{#if ok}}-->
+                <!--<h6>Yes</h6>-->
+                <!--{{/if}}-->
+            4. <!-- <custom-component v-show="condition">组件１</custom-component>-->
+       </textarea>
+        <div style="background:#aabbcc;color:orangered;padding:10px;">
+            <p>３。这种写法似乎要放在模板里　不然会报错</p>
+            <p>4.提示未注册</p>
+        </div>
+    </li>
+    <li>
+        <a href="#app4">４。列表渲染</a><br>
+        <textarea name=""  cols="100" rows="10" >
+            可能你觉得这将导致 Vue.js 弃用已有 DOM 并重新渲染整个列表——幸运的是并非如此。
+            Vue.js 实现了一些启发算法，以最大化复用 DOM 元素，因而用另一个数组替换数组是一个非常高效的操作。
+       </textarea>
+        <div style="background:#aabbcc;color:orangered;padding:10px;">
+            我了个去，启发算法不是一般人能写的呀　ＤＯＭ复用６６６
+            <p>track-by 理解有点难度</p>
+        </div>
+    </li>
+    <li>
+        <a href="#app5">5事件</a><br>
+        <textarea name=""  cols="100" rows="10">
+            v-on:click="say('hello!', $event)       function (msg, event)
+            v-on:click.stop.prevent="doThat"  .capture  .self
+            v-on:keyup.13   @keyup.enter
+            // 可以使用 @keyup.f1
+            Vue.directive('on').keyCodes.f1 = 112
+       </textarea>
+        <div style="background:#aabbcc;color:orangered;padding:10px;">
+
+        </div>
+    </li>
+    <li>
+        <a href="#app6">6表单</a><br>
+        <textarea name=""  cols="100" rows="10">
+        debounce 参数不会延迟 input 事件：它延迟“写入”底层数据。因此在使用 debounce 时应当用
+        vm.$watch() 响应数据的变化。若想延迟 DOM 事件，应当使用 debounce 过滤器。
+       </textarea>
+        <div style="background:#aabbcc;color:orangered;padding:10px;">
+
+        </div>
+    </li>
+</ul>
+<h1>1.插值</h1>
 <div id="app1">
    {{*a}}  <input v-model="a">
     {{{b}}}
@@ -37,20 +105,261 @@
     <br>
     {{c}}
 </div>
-
-<h1>css html绑定</h1>
+<h1>2.css html绑定</h1>
 <div id="app2">
     <div class="static" v-bind:class="{'class-a':isA,'class-B':isB}"></div>
+    <button v-on:click="changeABclass">切换class-a class-b</button>
+    <div v-bind:style="styleobj1"></div>
+</div>
+<h1>3.条件渲染</h1>
+<div id="app3">
+    <!--{{#if ok}}-->
+    <!--<h6>Yes</h6>-->
+    <!--{{/if}}-->
+    <h6 v-if="ok">Yes</h6>
+    <h6 v-else>no</h6>
+    <template v-if="ok">
+        <h6>Title</h6>
+        <p>Paragraph 1</p>
+        <p>Paragraph 2</p>
+    </template>
+    <h6 v-show="ok">v-show 不支持　template　，另外会存在于dom中，仅仅切换display属性</h6>
+    <!--<custom-component v-show="condition">组件１</custom-component>-->
+    <!--<p v-show="!condition">这可能也是一个组件</p>-->
+</div>
+<h1>4.列表渲染</h1>
+<div id="app4">
+    <!--<ul>-->
+        <!--<li v-for="item in items">-->
+            <!--{{ parentMessage }} - {{ $index }} - {{ item.message }}-->
+        <!--</li>-->
+    <!--</ul>-->
+    <ul>
+        <!--<template v-for="item in items">-->
+            <!--<li>{{ item.msg }}</li>-->
+            <!--<li class="divider"></li>-->
+        <!--</template>-->
+        <template v-for="item in items" >
+            <li>{{ item.msg }}</li>
+            <li class="divider"></li>
+        </template>
+        <ul >
+            <li v-for="value in object">
+                {{ $key }} : {{ value }}
+            </li>
+        </ul>
+        <div>
+            <span v-for="n in 10">{{ n }} </span>
+        </div>
+        <template v-for="item in items| filterBy 'Bar' in 'msg'"  >
+            <li>{{ item.msg }}</li>
+            <li class="divider"></li>
+        </template>
+        <input v-model="name">
+        <ul>
+            <li v-for="item in items | filterBy name in 'msg'">
+                {{ item.msg }}
+            </li>
+        </ul>
+    </ul>
+</div>
+<h1>5.方法与事件处理器</h1>
+<div id="app5">
+    <button v-on:click="say('hello!', $event)">Submit</button>
+    <button v-on:click.stop.prevent="doThat">修饰符串联</button>
+    <!-- 只有在 keyCode 是 13 时调用 vm.submit() -->
+    <input v-on:keyup.13="submit">
 </div>
 
+<h1>６。表单</h1>
+<div id="app6">
+
+    <span>Message is: {{ message }}</span>
+    <br>
+    <input type="text" v-model="message" placeholder="edit me">
+
+    <br>
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checkbox">{{ checked }}</label>
+
+    <br>
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+    <label for="john">John</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+    <label for="mike">Mike</label>
+    <br>
+    <span>Checked names: {{ checkedNames |json }}</span>
+    <p>|json　过滤器输出json.stringfy()要转换的 JavaScript 值（通常为对象或数组）换为 JavaScript 对象表示法 (Json) 字符串。</p>
+
+    <br>
+    <input type="radio" id="one" value="One" v-model="picked">
+    <label for="one">One</label>
+    <br>
+    <input type="radio" id="two" value="Two" v-model="picked">
+    <label for="two">Two</label>
+    <br>
+    <span>Picked: {{ picked }}</span>
+
+    <br>
+    <select v-model="selected">
+        <option selected>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+
+    <br>
+    <select v-model="selected2" multiple>
+        <option selected>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <br>
+    <span>Selected: {{ selected2 | json }}</span>
+
+    <br>
+    <select v-model="selected3">
+        <option v-for="option in options" v-bind:value="option.value">
+            {{ option.text }}
+        </option>
+    </select>
+    <span>Selected: {{ selected3 }}</span>
+
+    <br>
+    <!-- 当选中时，`picked` 为字符串 "a" -->
+    <input type="radio" v-model="picked" value="a">{{picked}}
+
+    <!-- `toggle` 为 true 或 false -->
+    <input type="checkbox" v-model="toggle">{{toggle}}
+
+    <!-- 当选中时，`selected` 为字符串 "abc" -->
+    <select v-model="selected">
+        <option value="abc">ABC</option>{{selected}}
+    </select>
+
+    <input
+            type="checkbox"
+            v-model="toggle"
+            v-bind:true-value="a"
+            v-bind:false-value="b">{{toggle}}
+    <!-- 在 "change" 而不是 "input" 事件中更新 -->
+    <input v-model="msg" lazy v-on:change="change" debounce="5000">{{msg}}
+    <input v-model="age" number>{{age}}
+</div>
 
 <script src="vue.js"></script>
 <script>
+     var app6 = new Vue({
+         el:'#app6',
+         data:{
+             a:'aaaaa',
+             b:'bbbb',
+             message:'',
+            checked:true,
+             checkedNames:[],
+            picked:'',
+             selected:"",
+             selected2:[],
+             selected3:"A",
+             options: [
+                 { text: 'One', value: 'A' },
+                 { text: 'Two', value: 'B' },
+                 { text: 'Three', value: 'C' }
+             ],
+             toggle:true,
+             msg:"",
+             age:''
+         },
+         methods:{
+             change:function(){
+                 alert("change事件");
+             }
+         }
+
+     });
+
+    var app5 = new Vue({
+       el:'#app5',
+        data:{},
+        methods:{
+            say:function(msg,event)
+            {
+                alert(msg);
+                event.preventDefault();//取消事件默认动作
+                event.stopPropagation();
+            },
+            doThat:function(){
+                alert('dosomthing');
+            },
+            submit:function(){
+                alert('keyup１３。。')
+            }
+        }
+    });
+
+
+
+
+    var app4=new Vue({
+       el:'#app4',
+        data:{
+            name:'filterBy',
+            parentMessage: 'Parent',
+            items: [
+                { msg: 'Foo' },
+                { msg: 'Bar' }
+            ],
+            object:{
+                FirstName: 'John',
+                LastName: 'Doe',
+                Age: 30
+            }
+        }
+    });
+    setTimeout(function(){
+//        app4.items=app4.items.filter(function(item){    //filter返回数组中的满足回调函数中指定的条件的元素。
+//            return item.msg.match(/Foo/);// match 将字符串与正则表达式匹配，并返回一个包含该搜索结果的数组。
+//                                        //没有找到匹配，将返回 null
+//        });
+        app4.items=[{msg:'aaa'},{msg:'bbb'}];
+        app4.items.$set(0,{msg:'ccc'});
+//        app4.items[0]={msg:'ccc'};
+//        app4.items.length=1;
+    },2000);
+
+
+    new Vue({
+        el:'#app3',
+        data:{
+            ok:true,
+            condition:true
+        }
+    });
+
     new Vue({
         el:'#app2',
         data:{
             isA:false,
-            isB:true
+            isB:true,
+            styleobj1:{
+                background:'yellow',
+                width:'100px',
+                height:'100px'
+            }
+        },
+        methods:{
+            changeABclass:function(){
+                if(this.isA==false)
+                {
+                    this.isA=true;
+                    this.isB=false;
+                }else{
+                    this.isA=false;
+                    this.isB=true;
+                }
+            }
         }
     });
 
@@ -70,5 +379,6 @@
         }
     });
 </script>
+<br><br><br><br><br><br><br>
 </body>
 </html>
