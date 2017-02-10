@@ -1,0 +1,87 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.18.1" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>riot.js &middot; 前端</title>
+  
+
+  
+  <link rel="stylesheet" href="http://cuifancastle.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://cuifancastle.github.io/css/syntax.css">
+  <link rel="stylesheet" href="http://cuifancastle.github.io/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="前端" />
+</head>
+
+	<body class=" ">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://cuifancastle.github.io/"><h1>前端</h1></a>
+      <p class="lead">
+       
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      
+      
+    </ul>
+
+    <p> </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>riot.js</h1>
+			  <span class="post-date">2017,2,10,星期一</span>
+			      <p>经过一周的技术调研，熟悉下<a href="http://riotjs.com">riot</a>的用法</p>
+
+<p>自己总结下riot的特点</p>
+
+<ol>
+<li>结合了react,vue的写法，独特的 custom tags(自定义标签)
+
+<ol>
+<li>内置语法把html,js,css写在一个文件(组件里) 有点像vue的 <a href="http://cn.vuejs.org/v2/guide/single-file-components.html">单文件组件*.vue</a>
+2.</li>
+</ol></li>
+<li>数据流，单向的
+
+<ol>
+<li>当父标签改变状态，有两个方式让子标签更新视图，一是自身表达式，二是this.on(&lsquo;update&rsquo;,()=&gt;{})</li>
+<li>当异步改变状态时，需要调用this.update方法</li>
+</ol></li>
+<li>yield 可以将自定义标签内部模板进行编译和插入，有from ,to 属性 可以指定</li>
+<li>事件，需要手动停止冒号，如果对组件内部事件感兴趣，需要手动添加 [data-role=&ldquo;]，做事件代理（其实我觉得用回调函数也可以 没试过）</li>
+</ol>
+
+<p>一些问题</p>
+
+<ol>
+<li>若组件写一次多端运行，需要react native做支持，riot编译成react 麻烦</li>
+<li>服务器端渲染，seo优化，render函数不完善</li>
+</ol>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

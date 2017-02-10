@@ -6,12 +6,111 @@
     <description>Recent content in Posts on 前端</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Fri, 10 Feb 2017 17:28:02 +0800</lastBuildDate>
     <atom:link href="http://cuifancastle.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>riot.js</title>
+      <link>http://cuifancastle.github.io/post/riot.js/</link>
+      <pubDate>Fri, 10 Feb 2017 17:28:02 +0800</pubDate>
+      
+      <guid>http://cuifancastle.github.io/post/riot.js/</guid>
+      <description>&lt;p&gt;经过一周的技术调研，熟悉下&lt;a href=&#34;http://riotjs.com&#34;&gt;riot&lt;/a&gt;的用法&lt;/p&gt;
+
+&lt;p&gt;自己总结下riot的特点&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;结合了react,vue的写法，独特的 custom tags(自定义标签)
+
+&lt;ol&gt;
+&lt;li&gt;内置语法把html,js,css写在一个文件(组件里) 有点像vue的 &lt;a href=&#34;http://cn.vuejs.org/v2/guide/single-file-components.html&#34;&gt;单文件组件*.vue&lt;/a&gt;
+2.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;数据流，单向的
+
+&lt;ol&gt;
+&lt;li&gt;当父标签改变状态，有两个方式让子标签更新视图，一是自身表达式，二是this.on(&amp;lsquo;update&amp;rsquo;,()=&amp;gt;{})&lt;/li&gt;
+&lt;li&gt;当异步改变状态时，需要调用this.update方法&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;yield 可以将自定义标签内部模板进行编译和插入，有from ,to 属性 可以指定&lt;/li&gt;
+&lt;li&gt;事件，需要手动停止冒号，如果对组件内部事件感兴趣，需要手动添加 [data-role=&amp;ldquo;]，做事件代理（其实我觉得用回调函数也可以 没试过）&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;一些问题&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;若组件写一次多端运行，需要react native做支持，riot编译成react 麻烦&lt;/li&gt;
+&lt;li&gt;服务器端渲染，seo优化，render函数不完善&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ajax</title>
+      <link>http://cuifancastle.github.io/post/ajax/</link>
+      <pubDate>Thu, 09 Feb 2017 14:53:28 +0800</pubDate>
+      
+      <guid>http://cuifancastle.github.io/post/ajax/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;最早接触ajax是从  &lt;a href=&#34;http://www.runoob.com/ajax/ajax-tutorial.html&#34;&gt;菜鸟教程&lt;/a&gt; 里过了一遍&lt;/li&gt;
+&lt;li&gt;之后一直用 &lt;a href=&#34;http://www.w3school.com.cn/jquery/jquery_ref_ajax.asp&#34;&gt;jquery.ajax&lt;/a&gt;,傻傻的只会 $.get,$.post&lt;/li&gt;
+&lt;li&gt;有必要重新认识下&lt;a href=&#34;http://jquery.cuishifeng.cn/jQuery.Ajax.html&#34;&gt;jquery.ajax中文文档&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;重新认识下&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/AJAX/Getting_Started&#34;&gt;ajax-MDN&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;举些没怎么用过的东西（jquery里）&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;jsonp&lt;/li&gt;
+&lt;li&gt;headers&lt;/li&gt;
+&lt;li&gt;mimeType&lt;/li&gt;
+&lt;li&gt;statusCode&lt;/li&gt;
+&lt;li&gt;timeout&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cnblogs.com/lihuiyy/archive/2012/07/17/2596468.html&#34;&gt;jQuery 中的 Ajax 全局事件&lt;/a&gt; , 做复杂单页应用时接触过ajaxError(callback)：Ajax请求出现错误时触发该事件&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>flux</title>
+      <link>http://cuifancastle.github.io/post/flux/</link>
+      <pubDate>Thu, 09 Feb 2017 12:02:08 +0800</pubDate>
+      
+      <guid>http://cuifancastle.github.io/post/flux/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;[Flux 架构入门教程]by阮一峰，里面概念讲的好
+&lt;img src=&#34;http://cuifancastle.github.io/imgs/2.png&#34; alt=&#34;&#34; /&gt;
+demo还是看&lt;a href=&#34;https://facebook.github.io/flux/docs/overview.html#content&#34;&gt;官网&lt;/a&gt;的吧&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>跨域</title>
+      <link>http://cuifancastle.github.io/post/%E8%B7%A8%E5%9F%9F/</link>
+      <pubDate>Thu, 09 Feb 2017 09:55:50 +0800</pubDate>
+      
+      <guid>http://cuifancastle.github.io/post/%E8%B7%A8%E5%9F%9F/</guid>
+      <description>&lt;p&gt;一. 同源策略&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.csdn.net/joyhen/article/details/21631833&#34;&gt;前端解决跨域问题的8种方案&lt;/a&gt;里面同源策略列了个表格很直观
+&lt;img src=&#34;http://cuifancastle.github.io/imgs/1.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;对于测试环境，我一般简单粗暴的直接设置&lt;a href=&#34;http://www.cnblogs.com/cshi/p/5660039.html&#34;&gt;Chrome浏览器支持跨域&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;二. 可能用到&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/API/Window/location&#34;&gt;window.location&lt;/a&gt; 对象用于获得当前页面的地址 (URL)，并把浏览器重定向到新的页面。&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>ie兼容问题</title>
       <link>http://cuifancastle.github.io/post/first/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 25 Oct 2015 08:36:54 -0700</pubDate>
       
       <guid>http://cuifancastle.github.io/post/first/</guid>
       <description>&lt;ol&gt;

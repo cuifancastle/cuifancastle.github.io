@@ -305,6 +305,10 @@ tbody tr:nth-child(odd) th {
 .post {
   margin-bottom: 4em;
 }
+.post-index{
+  max-height:300px;
+  overflow:hidden;
+}
 
 /* Blog post or page title */
 .page-title,
