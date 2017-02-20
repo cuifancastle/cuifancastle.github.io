@@ -10,11 +10,11 @@
     <atom:link href="http://cuifancastle.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>如何像写java一样写js（代码提示）</title>
-      <link>http://cuifancastle.github.io/post/%E5%A6%82%E4%BD%95%E5%83%8F%E5%86%99java%E4%B8%80%E6%A0%B7%E5%86%99js/</link>
+      <title>JS接口文档工具</title>
+      <link>http://cuifancastle.github.io/post/JS%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Mon, 20 Feb 2017 14:53:28 +0800</pubDate>
       
-      <guid>http://cuifancastle.github.io/post/%E5%A6%82%E4%BD%95%E5%83%8F%E5%86%99java%E4%B8%80%E6%A0%B7%E5%86%99js/</guid>
+      <guid>http://cuifancastle.github.io/post/JS%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7/</guid>
       <description>&lt;p&gt;需求：
 1. 代码提示，能自动识别
 &lt;img src=&#34;http://cuifancastle.github.io/imgs/4.png&#34; alt=&#34;&#34; /&gt;
