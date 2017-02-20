@@ -52,30 +52,29 @@
 			  <span class="post-date">2017,2,10,星期一</span>
 			      <p>经过一周的技术调研，熟悉下<a href="http://riotjs.com">riot</a>的用法</p>
 
-<p>自己总结下riot的特点</p>
+<p>总结下riot的特点</p>
 
 <ol>
 <li>结合了react,vue的写法，独特的 custom tags(自定义标签)
 
 <ol>
-<li>内置语法把html,js,css写在一个文件(组件里) 有点像vue的 <a href="http://cn.vuejs.org/v2/guide/single-file-components.html">单文件组件*.vue</a>
-2.</li>
+<li>内置语法把html,js,css写在一个文件(组件里) 有点像vue的 <a href="http://cn.vuejs.org/v2/guide/single-file-components.html">单文件组件*.vue</a></li>
 </ol></li>
-<li>数据流，单向的
+<li>更新视图
 
 <ol>
 <li>当父标签改变状态，有两个方式让子标签更新视图，一是自身表达式，二是this.on(&lsquo;update&rsquo;,()=&gt;{})</li>
 <li>当异步改变状态时，需要调用this.update方法</li>
 </ol></li>
 <li>yield 可以将自定义标签内部模板进行编译和插入，有from ,to 属性 可以指定</li>
-<li>事件，需要手动停止冒号，如果对组件内部事件感兴趣，需要手动添加 [data-role=&ldquo;]，做事件代理（其实我觉得用回调函数也可以 没试过）</li>
-</ol>
+<li>事件，需要手动停止冒号，如果对组件内部事件感兴趣，需要手动添加 [data-role=&ldquo;]，做事件代理</li>
 
-<p>一些问题</p>
+<li><p>看过<a href="http://www.tuicool.com/articles/U3UbIv7">riot风格规范</a>，感觉这么写代码相当棒，太简单了
+一些问题</p></li>
 
-<ol>
-<li>若组件写一次多端运行，需要react native做支持，riot编译成react 麻烦</li>
-<li>服务器端渲染，seo优化，render函数不完善</li>
+<li><p>若组件写一次多端运行，需要react native做支持，riot编译成react 麻烦</p></li>
+
+<li><p>服务器端渲染，seo优化，render函数不完善</p></li>
 </ol>
 
 			</div>

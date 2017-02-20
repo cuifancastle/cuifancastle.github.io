@@ -6,8 +6,46 @@
     <description>Recent content in Posts on 前端</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 10 Feb 2017 17:28:02 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 20 Feb 2017 14:53:28 +0800</lastBuildDate>
     <atom:link href="http://cuifancastle.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>如何像写java一样写js（代码提示）</title>
+      <link>http://cuifancastle.github.io/post/%E5%A6%82%E4%BD%95%E5%83%8F%E5%86%99java%E4%B8%80%E6%A0%B7%E5%86%99js/</link>
+      <pubDate>Mon, 20 Feb 2017 14:53:28 +0800</pubDate>
+      
+      <guid>http://cuifancastle.github.io/post/%E5%A6%82%E4%BD%95%E5%83%8F%E5%86%99java%E4%B8%80%E6%A0%B7%E5%86%99js/</guid>
+      <description>&lt;p&gt;需求：
+1. 代码提示，能自动识别
+&lt;img src=&#34;http://cuifancastle.github.io/imgs/4.png&#34; alt=&#34;&#34; /&gt;
+2. 一键生成api文档
+&lt;img src=&#34;http://cuifancastle.github.io/imgs/5.png&#34; alt=&#34;&#34; /&gt;
+技术：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;jsdoc&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;hBuilder jsdoc+&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;grunt grunt-jsdoc&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;说明：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;hBuilder编辑器 对jsdoc进行了扩展，可以实现需求一 &lt;a href=&#34;http://ask.dcloud.net.cn/article/129&#34;&gt;参考这里&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;grunt-jsdoc 可以用来生成api文档
+&lt;img src=&#34;http://cuifancastle.github.io/imgs/6.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;运行grunt doc 即可将js/ 里面符合jsdoc规范的生成doc/下的文档&lt;/p&gt;
+
+&lt;p&gt;截图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://cuifancastle.github.io/imgs/7.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>riot.js</title>
@@ -17,30 +55,29 @@
       <guid>http://cuifancastle.github.io/post/riot.js/</guid>
       <description>&lt;p&gt;经过一周的技术调研，熟悉下&lt;a href=&#34;http://riotjs.com&#34;&gt;riot&lt;/a&gt;的用法&lt;/p&gt;
 
-&lt;p&gt;自己总结下riot的特点&lt;/p&gt;
+&lt;p&gt;总结下riot的特点&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;结合了react,vue的写法，独特的 custom tags(自定义标签)
 
 &lt;ol&gt;
-&lt;li&gt;内置语法把html,js,css写在一个文件(组件里) 有点像vue的 &lt;a href=&#34;http://cn.vuejs.org/v2/guide/single-file-components.html&#34;&gt;单文件组件*.vue&lt;/a&gt;
-2.&lt;/li&gt;
+&lt;li&gt;内置语法把html,js,css写在一个文件(组件里) 有点像vue的 &lt;a href=&#34;http://cn.vuejs.org/v2/guide/single-file-components.html&#34;&gt;单文件组件*.vue&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
-&lt;li&gt;数据流，单向的
+&lt;li&gt;更新视图
 
 &lt;ol&gt;
 &lt;li&gt;当父标签改变状态，有两个方式让子标签更新视图，一是自身表达式，二是this.on(&amp;lsquo;update&amp;rsquo;,()=&amp;gt;{})&lt;/li&gt;
 &lt;li&gt;当异步改变状态时，需要调用this.update方法&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
 &lt;li&gt;yield 可以将自定义标签内部模板进行编译和插入，有from ,to 属性 可以指定&lt;/li&gt;
-&lt;li&gt;事件，需要手动停止冒号，如果对组件内部事件感兴趣，需要手动添加 [data-role=&amp;ldquo;]，做事件代理（其实我觉得用回调函数也可以 没试过）&lt;/li&gt;
-&lt;/ol&gt;
+&lt;li&gt;事件，需要手动停止冒号，如果对组件内部事件感兴趣，需要手动添加 [data-role=&amp;ldquo;]，做事件代理&lt;/li&gt;
 
-&lt;p&gt;一些问题&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;看过&lt;a href=&#34;http://www.tuicool.com/articles/U3UbIv7&#34;&gt;riot风格规范&lt;/a&gt;，感觉这么写代码相当棒，太简单了
+一些问题&lt;/p&gt;&lt;/li&gt;
 
-&lt;ol&gt;
-&lt;li&gt;若组件写一次多端运行，需要react native做支持，riot编译成react 麻烦&lt;/li&gt;
-&lt;li&gt;服务器端渲染，seo优化，render函数不完善&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;若组件写一次多端运行，需要react native做支持，riot编译成react 麻烦&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;服务器端渲染，seo优化，render函数不完善&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
